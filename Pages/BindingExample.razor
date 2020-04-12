@@ -1,0 +1,61 @@
+﻿@page "/binding-example"
+@using BlazorApp_ClientPortal.Components;
+
+<div>
+    <form class="col">
+        <h3>BindingExample</h3>
+
+        <input type="text" @bind="_paragraphStyle" />
+
+        <p @bind-style="_paragraphStyle" @bind-style:event="onchange">Blazor style of App!</p>
+
+        @*When a user provides an unparsable value to a databound element, the unparsable value is automatically reverted to its previous value when the bind event is triggered.*@
+        <input @bind="MyProperty" />
+        <br />
+        <input @bind="StartDate" @bind:format="yyyy-MM-dd" />
+    </form>
+</div>
+
+<br />
+
+@* Parent to Child Binding Example *@
+<div>
+    <p>Parent to Child Binding Example</p>
+    <br />
+    <YearComponent @bind-Year="@Year"></YearComponent>
+
+    <button class="btn btn-primary" @onclick="ChangeTheYear">
+        Change Year
+    </button>
+</div>
+
+
+
+@* Child to Parent Binding Example *@
+<div>
+    <p>Child to Parent Binding Example:@_password</p>
+    <br />
+
+    //?? why we are binding password here.
+    <PasswordFieldComponent @bind-Password="_password"></PasswordFieldComponent>
+    
+</div>
+
+@code {
+
+    private string _paragraphStyle = "color:red";
+
+    public int MyProperty { get; set; } = 123;
+
+    public int Year { get; set; }
+
+    public DateTime StartDate { get; set; } = new DateTime(2020, 04, 12);
+
+    private void ChangeTheYear()
+    {
+        Year = StartDate.Year + 1;
+    }
+
+    // Password Field Component related.
+    private string _password;
+}
