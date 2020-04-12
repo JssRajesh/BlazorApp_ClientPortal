@@ -37,7 +37,7 @@
     <br />
 
     //?? why we are binding password here.
-    <PasswordFieldComponent @bind-Password="_password"></PasswordFieldComponent>
+    <PasswordFieldComponent PasswordChanged="OnPasswordChanged"></PasswordFieldComponent>
     
 </div>
 
@@ -58,4 +58,10 @@
 
     // Password Field Component related.
     private string _password;
+
+    private void OnPasswordChanged(string password)
+    {
+        _password = password;
+
+    }
 }
