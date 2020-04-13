@@ -1,5 +1,5 @@
 ﻿@page "/counter"
-
+@using BlazorApp_ClientPortal.Components
 <h1>Counter</h1>
 
 <p>Current count: @currentCount</p>
@@ -10,7 +10,15 @@
     <a href="/">Go to Home</a>
 </Dialog>
 
-<a href="/binding-example">Go to Binding Example</a>
+<a href="/binding-example" class="bg-danger">Go to Binding Example</a>
+<br /><br />
+
+<h1>Example of Templated Component: <a href="https://docs.microsoft.com/en-us/aspnet/core/blazor/templated-components?view=aspnetcore-3.1">ListViewTemplate</a></h1>
+<ListViewTemplate items="@pets" TItem="string">
+    <TemplateItem Context="pet">
+        <li>@pet</li>
+    </TemplateItem>
+</ListViewTemplate>
 
 @code {
     private int currentCount = 0;
@@ -18,5 +26,10 @@
     private void IncrementCount()
     {
         currentCount++;
+
+        pets.Add("Rajesh");
+        pets.Add("Singh");
     }
+
+    private List<string> pets = new List<string> { "Random" };
 }

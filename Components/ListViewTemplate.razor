@@ -1,0 +1,19 @@
+﻿@page "/templated-component-example"
+@typeparam TItem
+
+<ul>
+    @foreach(var item in items)
+    {
+        @TemplateItem(item)
+    }
+</ul>
+
+@code {
+
+    [Parameter]
+    public RenderFragment<TItem> TemplateItem { get; set; }
+
+    [Parameter]
+    public List<TItem> items { get; set; }
+
+}
