@@ -1,0 +1,33 @@
+﻿@page "/stop-eventpropogation"
+
+    <h3>StopEventPropogation:shows how to stop event propgation so that child element event does not propogate to parent element.</h3>
+
+<div @onclick="OnParentDivClick">
+    <div @onclick="OnChildDivClick">
+        Child div that does not stop propogation!!
+    </div>
+    <div @onclick="OnChildDivClick" @onclick:stopPropagation="_stopPropogation">
+        Child div that stop propogation!!
+    </div>
+</div>
+
+<input type="checkbox" @bind="_stopPropogation" />
+<span>Stop Propgation</span>
+
+<br /><br />
+<span>@_message</span>
+
+@code {
+
+    private string _message;
+    private bool _stopPropogation = false;
+    private void OnParentDivClick()
+    {
+        _message += "Parent Div Clicked!";
+    }
+
+    private void OnChildDivClick()
+    {
+        _message = "Child Div Clicked!";
+    }
+}
