@@ -1,5 +1,7 @@
 ﻿@page "/fetchdata"
 
+@using Radzen.Blazor;
+
 @using BlazorApp_ClientPortal.Data
 @inject WeatherForecastService ForecastService
 
@@ -32,8 +34,36 @@ else
                     <td>@forecast.Summary</td>
                 </tr>
             }
+
         </tbody>
     </table>
+
+    <br />
+    <h3>Radzen Grid:</h3>
+    <RadzenGrid AllowSorting="true" Data="@forecasts" TItem="WeatherForecast" AllowPaging="true" PageSize="3">
+        <Columns>
+            <RadzenGridColumn TItem="WeatherForecast" Context="data" Property="Date" Title="Date" Type="DateTime" FilterProperty="true">
+                <Template>
+                    @data.Date.ToShortDateString()
+                </Template>
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="WeatherForecast" Context="data" Property="TemperatureC" Title="TemperatureC" Type="int">
+                <Template>
+                    @data.TemperatureC
+                </Template>
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="WeatherForecast" Context="data" Property="TemperatureF" Title="TemperatureF" Type="int">
+                <Template>
+                    @data.TemperatureF
+                </Template>
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="WeatherForecast" Context="data" Property="Summary" Title="Summary" Type="string">
+                <Template>
+                    @data.Summary
+                </Template>
+            </RadzenGridColumn>
+        </Columns>
+    </RadzenGrid>
 }
 
 @code {
