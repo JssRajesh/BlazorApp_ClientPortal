@@ -1,0 +1,58 @@
+﻿@page "/lifecycle-example"
+
+@implements IDisposable;
+
+<h3>Component lifecycle examples:</h3>
+<p>
+    <i>
+        OnInitializedAsync and OnInitialized are invoked when the component is initialized after having received its initial parameters from its parent component.
+        <br />
+        SetParametersAsync sets parameters supplied by the component's parent in the render tree. If base.SetParametersAync isn't invoked,
+        the custom code can interpret the incoming parameters value in any way required. For example, there's no requirement to assign the incoming parameters to the properties on the class.
+    </i>
+</p>
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        await Task.FromResult(0);
+    }
+
+    // Before parameter is set.
+    public override async Task SetParametersAsync(ParameterView parameters)
+    {
+        // can write your logic before parameters are set.
+        await base.SetParametersAsync(parameters);
+    }
+
+    // after parameter is set.
+    protected override async Task OnParametersSetAsync()
+    {
+        await Task.FromResult(0);
+    }
+
+    // The firstRender parameter for OnAfterRenderAsync and OnAfterRender: Is set to true the first time that the component instance is rendered.
+    // Can be used to ensure that initialization work is only performed once.
+    // OnAfterRender and OnAfterRenderAsync aren't called when prerendering on the server.
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await Task.FromResult(0);
+        }
+    }
+
+    // Override ShouldRender to suppress UI refreshing. If the implementation returns true, the UI is refreshed.
+    // ShouldRender is called each time the component is rendered.
+    // Even if ShouldRender is overridden, the component is always initially rendered.
+    protected override bool ShouldRender()
+    {
+        var renderUI = true;
+
+        return renderUI;
+    }
+
+    public void Dispose()
+    {
+    }
+}

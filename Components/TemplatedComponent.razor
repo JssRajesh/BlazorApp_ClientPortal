@@ -1,0 +1,13 @@
+﻿@page "/templated-component-example"
+<h3>TemplatedComponent</h3>
+<h1>Example of Templated Component: <a href="https://docs.microsoft.com/en-us/aspnet/core/blazor/templated-components?view=aspnetcore-3.1">ListViewTemplate</a></h1>
+<ListViewTemplate items="@pets" TItem="string">
+    <TemplateItem Context="pet">
+        <li>@pet</li>
+    </TemplateItem>
+</ListViewTemplate>
+
+@code {
+    private List<string> pets = new List<string> { "Random", "Random01" };
+
+}

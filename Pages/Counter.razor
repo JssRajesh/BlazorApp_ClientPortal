@@ -4,21 +4,34 @@
 
 <p>Current count: @currentCount</p>
 
+<br />
+<br />
+
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
+<br />
+<br />
+
 <Dialog Title="Blazor_Rajesh">
-    <a href="/">Go to Home</a>
+    <a href="/" style="background-color:coral">Go to Home</a>
 </Dialog>
 
-<a href="/binding-example" class="bg-danger">Go to Binding Example</a>
-<br /><br />
+<br />
+<br />
 
-<h1>Example of Templated Component: <a href="https://docs.microsoft.com/en-us/aspnet/core/blazor/templated-components?view=aspnetcore-3.1">ListViewTemplate</a></h1>
-<ListViewTemplate items="@pets" TItem="string">
-    <TemplateItem Context="pet">
-        <li>@pet</li>
-    </TemplateItem>
-</ListViewTemplate>
+<a href="/binding-example" style="background-color:coral">Go to Binding Example</a>
+<br />
+<br />
+
+<a href="/lifecycle-example" style="background-color:coral">Go to Component Lifecycle Example</a>
+<br />
+<br />
+
+<a href="/templated-component-example" style="background-color:coral">Go to Templated Component example Example</a>
+<br />
+<br />
+
+
 
 @code {
     private int currentCount = 0;
@@ -26,10 +39,7 @@
     private void IncrementCount()
     {
         currentCount++;
-
-        pets.Add("Rajesh");
-        pets.Add("Singh");
     }
 
-    private List<string> pets = new List<string> { "Random" };
+
 }
