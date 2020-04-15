@@ -15,7 +15,7 @@
 }
 else
 {
-    <table class="table">
+    @*<table class="table">
         <thead>
             <tr>
                 <th>Date</th>
@@ -36,34 +36,50 @@ else
             }
 
         </tbody>
-    </table>
+    </table>*@
 
     <br />
-    <h3>Radzen Grid:</h3>
-    <RadzenGrid AllowSorting="true" Data="@forecasts" TItem="WeatherForecast" AllowPaging="true" PageSize="3">
-        <Columns>
-            <RadzenGridColumn TItem="WeatherForecast" Context="data" Property="Date" Title="Date" Type="DateTime" FilterProperty="true">
-                <Template>
-                    @data.Date.ToShortDateString()
-                </Template>
-            </RadzenGridColumn>
-            <RadzenGridColumn TItem="WeatherForecast" Context="data" Property="TemperatureC" Title="TemperatureC" Type="int">
-                <Template>
-                    @data.TemperatureC
-                </Template>
-            </RadzenGridColumn>
-            <RadzenGridColumn TItem="WeatherForecast" Context="data" Property="TemperatureF" Title="TemperatureF" Type="int">
-                <Template>
-                    @data.TemperatureF
-                </Template>
-            </RadzenGridColumn>
-            <RadzenGridColumn TItem="WeatherForecast" Context="data" Property="Summary" Title="Summary" Type="string">
-                <Template>
-                    @data.Summary
-                </Template>
-            </RadzenGridColumn>
-        </Columns>
-    </RadzenGrid>
+    <Radzen.Blazor.RadzenCard>
+        <RadzenTextBox Placeholder="Name"
+                       @onfocus="OnFocus"
+                       Name="txtName">
+
+        </RadzenTextBox>
+        <RadzenDropDown Data="@forecasts" TValue="WeatherForecast" TextProperty="Summary" ValueProperty="Summary"
+                        Placeholder="Select..."
+                        Change="OnDropdownChanged">
+        </RadzenDropDown>
+
+        <RadzenDropDown Multiple="true" Placeholder="Select..." Data="@forecasts" TextProperty="Summary" ValueProperty="Summary"
+                        TValue="WeatherForecast"
+                        Change="OnDropdownChanged" />
+
+        <h3>Radzen Grid:</h3>
+        <RadzenGrid AllowSorting="true" Data="@forecasts" TItem="WeatherForecast" AllowPaging="true" PageSize="3">
+            <Columns>
+                <RadzenGridColumn TItem="WeatherForecast" Context="data" Property="Date" Title="Date" Type="DateTime" FilterProperty="true">
+                    <Template>
+                        @data.Date.ToShortDateString()
+                    </Template>
+                </RadzenGridColumn>
+                <RadzenGridColumn TItem="WeatherForecast" Context="data" Property="TemperatureC" Title="TemperatureC" Type="int">
+                    <Template>
+                        @data.TemperatureC
+                    </Template>
+                </RadzenGridColumn>
+                <RadzenGridColumn TItem="WeatherForecast" Context="data" Property="TemperatureF" Title="TemperatureF" Type="int">
+                    <Template>
+                        @data.TemperatureF
+                    </Template>
+                </RadzenGridColumn>
+                <RadzenGridColumn TItem="WeatherForecast" Context="data" Property="Summary" Title="Summary" Type="string">
+                    <Template>
+                        @data.Summary
+                    </Template>
+                </RadzenGridColumn>
+            </Columns>
+        </RadzenGrid>
+    </Radzen.Blazor.RadzenCard>
 }
 
 @code {
@@ -72,5 +88,16 @@ else
     protected override async Task OnInitializedAsync()
     {
         forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
+    }
+
+    private void OnDropdownChanged()
+    {
+       
+    }
+
+    private void OnFocus()
+    {
+        
+        
     }
 }

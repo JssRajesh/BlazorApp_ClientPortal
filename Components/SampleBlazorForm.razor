@@ -1,0 +1,24 @@
+﻿@page "/sample-form"
+@using BlazorApp_ClientPortal.Models;
+
+<h3>SampleBlazorForm</h3>
+<p>For more details visit <a href="https://docs.microsoft.com/en-us/aspnet/core/blazor/forms-validation?view=aspnetcore-3.1">Forms and vaidations</a></p>
+
+<EditForm Model="@_exampleModel" OnValidSubmit="OnFormSubmit">
+    <DataAnnotationsValidator></DataAnnotationsValidator>
+    <ValidationSummary></ValidationSummary>
+    <InputText @bind-Value="_exampleModel.Name"></InputText>
+
+    <button type="submit" onsubmit="OnButtonSubmit">Submit</button>
+</EditForm>
+
+@code {
+
+    private ExampleModel _exampleModel = new ExampleModel();
+
+    private void OnFormSubmit()
+    {
+        Console.WriteLine("Form sucessfully submitted!");
+    }
+
+}
