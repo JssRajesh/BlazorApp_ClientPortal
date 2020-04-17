@@ -7,33 +7,44 @@
 
 <div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
     <ul class="nav flex-column">
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="oi oi-home" aria-hidden="true"></span> Home
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="counter">
-                <span class="oi oi-plus" aria-hidden="true"></span> POC
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="fetchdata">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data
-            </NavLink>
-        </li>
+        <AuthorizeView>
+            <Authorized>
+                <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                        <span class="oi oi-home" aria-hidden="true"></span> Home
+                    </NavLink>
+                </li>
+                <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="counter">
+                        <span class="oi oi-plus" aria-hidden="true"></span> POC
+                    </NavLink>
+                </li>
+                <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="fetchdata">
+                        <span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data
+                    </NavLink>
+                </li>
 
-        <li class="nav-item px-3 bg-transparent">
-            <NavLink class="nav-link" href="account">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Create Account
-            </NavLink>
-        </li>
+                <li class="nav-item px-3 bg-transparent">
+                    <NavLink class="nav-link" href="account">
+                        <span class="oi oi-list-rich" aria-hidden="true"></span> Create Account
+                    </NavLink>
+                </li>
 
-        <li class="nav-item px-3 bg-transparent">
-            <NavLink class="nav-link" href="login">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Login
-            </NavLink>
-        </li>
+                <li class="nav-item px-3 bg-transparent">
+                    <NavLink class="nav-link" href="logout">
+                        <span class="oi oi-list-rich" aria-hidden="true"></span> Logout ( @context.User.Claims.First()?.Value )
+                    </NavLink>
+                </li>
+            </Authorized>
+            <NotAuthorized>
+                <li class="nav-item px-3 bg-transparent">
+                    <NavLink class="nav-link" href="login">
+                        <span class="oi oi-list-rich" aria-hidden="true"></span> Login
+                    </NavLink>
+                </li>
+            </NotAuthorized>
+        </AuthorizeView>
     </ul>
 </div>
 

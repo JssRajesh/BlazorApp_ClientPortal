@@ -16,6 +16,7 @@ using Microsoft.Extensions.Hosting;
 using BlazorApp_ClientPortal.Areas.Identity;
 using BlazorApp_ClientPortal.Data;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Http;
 
 namespace BlazorApp_ClientPortal
 {
@@ -38,6 +39,8 @@ namespace BlazorApp_ClientPortal
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddRazorPages();
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             // Add default authentication scheme.
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)

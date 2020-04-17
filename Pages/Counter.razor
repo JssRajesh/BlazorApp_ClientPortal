@@ -36,10 +36,17 @@
 <br />
 
 @code {
+
+    // injecting accessor just to check if user  is authenticated and other users details after login.
+
+    [Inject]
+    public Microsoft.AspNetCore.Http.IHttpContextAccessor ContextAccessor { get; set; }
+
     private int currentCount = 0;
 
     private void IncrementCount()
     {
+        var user = ContextAccessor.HttpContext.User;
         currentCount++;
     }
 
