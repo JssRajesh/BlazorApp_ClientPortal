@@ -15,6 +15,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using BlazorApp_ClientPortal.Areas.Identity;
 using BlazorApp_ClientPortal.Data;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace BlazorApp_ClientPortal
 {
@@ -37,6 +38,11 @@ namespace BlazorApp_ClientPortal
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddRazorPages();
+
+            // Add default authentication scheme.
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie();
+
             services.AddServerSideBlazor();
             services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
             services.AddSingleton<WeatherForecastService>();
@@ -62,6 +68,7 @@ namespace BlazorApp_ClientPortal
 
             app.UseRouting();
 
+            //Add authentication and authorization pipeline.
             app.UseAuthentication();
             app.UseAuthorization();
 
