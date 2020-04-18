@@ -38,8 +38,12 @@ namespace BlazorApp_ClientPortal
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             // Add default authentication scheme.
-            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            //services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            //    .AddCookie();
+
+            services.AddAuthentication("Identity.Application")
                 .AddCookie();
+
 
             services.AddServerSideBlazor();
             services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();

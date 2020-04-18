@@ -32,14 +32,14 @@
                 </li>
 
                 <li class="nav-item px-3 bg-transparent">
-                    <NavLink class="nav-link" href="logout">
-                        <span class="oi oi-list-rich" aria-hidden="true"></span> Logout ( @context.User.Claims.First()?.Value )
+                    <NavLink class="nav-link" href="Identity\Account\Logout">
+                        <span class="oi oi-list-rich" aria-hidden="true"></span> Logout
                     </NavLink>
                 </li>
             </Authorized>
             <NotAuthorized>
                 <li class="nav-item px-3 bg-transparent">
-                    <NavLink class="nav-link" href="login">
+                    <NavLink class="nav-link" href="Identity\Account\Login">
                         <span class="oi oi-list-rich" aria-hidden="true"></span> Login
                     </NavLink>
                 </li>

@@ -36,7 +36,7 @@ namespace BlazorApp_ClientPortal.Areas.Identity.Pages.Account
             }
             else
             {
-                return RedirectToPage();
+                return RedirectToPage("/");
             }
         }
     }
