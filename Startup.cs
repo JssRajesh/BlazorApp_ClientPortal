@@ -35,6 +35,8 @@ namespace BlazorApp_ClientPortal
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddHttpClient(); // register IHttpClientFactory for make an api call from server blazor app.
+
             services.AddRazorPages();
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();

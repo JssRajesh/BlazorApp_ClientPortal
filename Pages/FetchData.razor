@@ -1,4 +1,44 @@
 ﻿@page "/fetchdata"
 
-<div>Fetch Data</div>
+@using System.Net.Http
 
+<div>Manage Todo Items</div>
+
+@if (_todoItems == null)
+{
+    <div>Loading....</div>
+}
+else
+{
+
+<div>
+    <table class="card">
+        @foreach (var todoItem in _todoItems)
+        {
+            <thead>
+                <tr>
+                    <th>"Id"</th>
+                </tr>
+                <tr>
+                    <th>"Name"</th>
+                </tr>
+                <tr>
+                    <th>"IsComplete"</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>@todoItem.Id</td>
+                </tr>
+                <tr>
+                    <td>@todoItem.Name</td>
+                </tr>
+                <tr>
+                    <td>@todoItem.IsComplete</td>
+                </tr>
+            </tbody>
+        }
+    </table>
+</div>
+}
