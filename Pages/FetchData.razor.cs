@@ -15,22 +15,43 @@ namespace BlazorApp_ClientPortal.Pages
         public IHttpClientFactory httpClientFactory { get; set; }
         private List<TodoItem> _todoItems { get; set; }
 
+        private TodoItem SelectedTodoItem { get; set; } = new TodoItem();
+
         protected override async Task OnInitializedAsync()
         {
-            var request = new HttpRequestMessage(HttpMethod.Get,
-            "https://localhost:44387/api/TodoItems/GetAllTodoItems");
-            request.Headers.Add("Accept", "application/json");
-            //request.Headers.Add("User-Agent", "HttpClientFactory-Sample");
+            _todoItems = new List<TodoItem>();
+            _todoItems.Add(new TodoItem { Id = 1, Name = "Rajesh", IsComplete = false });
+            _todoItems.Add(new TodoItem { Id = 2, Name = "singh", IsComplete = true });
 
-            var client = httpClientFactory.CreateClient();
-            var response = await client.SendAsync(request);
+            //var request = new HttpRequestMessage(HttpMethod.Get,
+            //"https://localhost:44387/api/TodoItems/GetAllTodoItems");
+            //request.Headers.Add("Accept", "application/json");
+            ////request.Headers.Add("User-Agent", "HttpClientFactory-Sample");
 
-            if (response.IsSuccessStatusCode)
-            {
-                using var responseStream = await response.Content.ReadAsStreamAsync();
-                _todoItems = await JsonSerializer.DeserializeAsync
-                    <List<TodoItem>>(responseStream);
-            }
+            //var client = httpClientFactory.CreateClient();
+            //var response = client.SendAsync(request).Result;
+
+            //if (response.IsSuccessStatusCode)
+            //{
+            //    using var responseStream = await response.Content.ReadAsStreamAsync();
+            //    _todoItems = await JsonSerializer.DeserializeAsync
+            //        <List<TodoItem>>(responseStream);
+            //}
+        }
+
+        public void SaveFormData()
+        {
+
+        }
+
+        public void EditData()
+        {
+
+        }
+
+        public void EditData(TodoItem todoItem)
+        {
+            SelectedTodoItem = todoItem;
         }
     }
 }

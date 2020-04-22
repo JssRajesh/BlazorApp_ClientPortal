@@ -2,6 +2,9 @@
 
 @using System.Net.Http
 
+@using Radzen.Blazor; 
+@using Blazor_ClientPortal.API; 
+
 <div>Manage Todo Items</div>
 
 @if (_todoItems == null)
@@ -12,33 +15,46 @@ else
 {
 
 <div>
-    <table class="card">
-        @foreach (var todoItem in _todoItems)
-        {
-            <thead>
-                <tr>
-                    <th>"Id"</th>
-                </tr>
-                <tr>
-                    <th>"Name"</th>
-                </tr>
-                <tr>
-                    <th>"IsComplete"</th>
-                </tr>
-            </thead>
+    <EditForm Model="@SelectedTodoItem" OnValidSubmit="SaveFormData">
 
-            <tbody>
-                <tr>
-                    <td>@todoItem.Id</td>
-                </tr>
-                <tr>
-                    <td>@todoItem.Name</td>
-                </tr>
-                <tr>
-                    <td>@todoItem.IsComplete</td>
-                </tr>
-            </tbody>
-        }
-    </table>
+        <DataAnnotationsValidator></DataAnnotationsValidator>
+        <ValidationSummary></ValidationSummary>
+        <p>
+            <label>Name:</label>
+            <InputText id="Name" @bind-Value="SelectedTodoItem.Name">Name</InputText>
+        </p>
+        <p>
+            <label>IsComplete:</label>
+            <InputCheckbox @bind-Value="SelectedTodoItem.IsComplete">Is Complete</InputCheckbox>
+        </p>
+        
+        <br />
+        <h2>Grid.....</h2>
+        <p>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>IsComplete</th>
+                    </tr>
+                </thead>
+
+                @foreach (var todoItem in _todoItems)
+                {
+                    <tbody>
+                        <tr>
+                            <td>@todoItem.Id</td>
+                            <td>@todoItem.Name</td>
+                            <td>@todoItem.IsComplete</td>
+                            <td><button class="btn-primary" @onclick="@(() => EditData(todoItem))">Edit</button></td>
+                        </tr>
+                    </tbody>
+                }
+            </table>
+        </p>
+        <br />
+        <button type="submit" class="btn btn-primary">Save</button>
+</EditForm>
 </div>
 }
