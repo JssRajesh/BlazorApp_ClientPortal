@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorApp_ClientPortal", "B
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor_ClientPortal.API", "..\Blazor_ClientPortal.API\Blazor_ClientPortal.API.csproj", "{35EF6D07-70DC-486C-A842-448FEDF0A19C}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Marvin.IDP", "..\Marvin.IDP\Marvin.IDP.csproj", "{2434E653-C7CB-474A-9394-89A1D3A4D621}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{35EF6D07-70DC-486C-A842-448FEDF0A19C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{35EF6D07-70DC-486C-A842-448FEDF0A19C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{35EF6D07-70DC-486C-A842-448FEDF0A19C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2434E653-C7CB-474A-9394-89A1D3A4D621}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2434E653-C7CB-474A-9394-89A1D3A4D621}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2434E653-C7CB-474A-9394-89A1D3A4D621}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2434E653-C7CB-474A-9394-89A1D3A4D621}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

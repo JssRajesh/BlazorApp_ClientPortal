@@ -26,7 +26,7 @@ namespace BlazorApp_ClientPortal.Pages
             //var request = new HttpRequestMessage(HttpMethod.Get,
             //"https://localhost:44387/api/TodoItems/GetAllTodoItems");
             //request.Headers.Add("Accept", "application/json");
-            ////request.Headers.Add("User-Agent", "HttpClientFactory-Sample");
+            //request.Headers.Add("User-Agent", "HttpClientFactory-Sample");
 
             //var client = httpClientFactory.CreateClient();
             //var response = client.SendAsync(request).Result;

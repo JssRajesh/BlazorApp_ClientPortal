@@ -51,28 +51,28 @@ namespace BlazorApp_ClientPortal
             services.AddAuthentication(options =>
                                     {
                                         options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                                        // options.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
+                                        options.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
                                     }
                                       )
                     .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme)
-                    //.AddOpenIdConnect(options =>
-                    //{
-                    //    options.Authority = "https://localhost:44333";
-                    //    //options.ClientId = "bethanyspieshophr";
-                    //    options.ClientId = "BlazorApp_ClientPortal";
-                        
-                    //    options.ClientSecret = "108B7B4F-BEFC-4DD2-82E1-7F025F0F75D0";
-                    //    options.ResponseType = "code id_token";
+                    .AddOpenIdConnect(options =>
+                    {
+                        options.Authority = "https://localhost:44333";
+                        //options.ClientId = "bethanyspieshophr";
+                        options.ClientId = "BlazorApp_ClientPortal";
 
-                    //    options.Scope.Add("openid");
-                    //    options.Scope.Add("email");
-                    //    options.Scope.Add("profile");
+                        options.ClientSecret = "108B7B4F-BEFC-4DD2-82E1-7F025F0F75D0";
+                        options.ResponseType = "code id_token";
 
-                    //    //options.CallbackPath = ...
+                        options.Scope.Add("openid");
+                        options.Scope.Add("email");
+                        options.Scope.Add("profile");
 
-                    //    options.SaveTokens = true;
-                    //    options.GetClaimsFromUserInfoEndpoint = true;
-                    //})
+                        //options.CallbackPath = ...
+
+                        options.SaveTokens = true;
+                        options.GetClaimsFromUserInfoEndpoint = true;
+                    })
                     ;
 
             services.AddServerSideBlazor();

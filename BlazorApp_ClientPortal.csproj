@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Blazor_ClientPortal.API\Blazor_ClientPortal.API.csproj" />
+    <ProjectReference Include="..\Marvin.IDP\Marvin.IDP.csproj" />
   </ItemGroup>
 
 </Project>
